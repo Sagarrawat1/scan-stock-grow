@@ -1,0 +1,25 @@
+{
+  "name": "ScanSmart",
+  "short_name": "ScanSmart",
+  "description": "Scan barcodes to manage stock, expiry dates, sales and profit — smart inventory management for every shopkeeper.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#f7f8f5",
+  "theme_color": "#0f766e",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
