@@ -14,6 +14,7 @@ import { Route as AuthRouteImport } from './routes/auth'
 import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as ExpiryRouteImport } from './routes/expiry'
 import { Route as InventoryRouteImport } from './routes/inventory'
+import { Route as SalesRouteImport } from './routes/sales'
 import { Route as ScanRouteImport } from './routes/scan'
 import { Route as SellRouteImport } from './routes/sell'
 
@@ -42,6 +43,11 @@ const InventoryRoute = InventoryRouteImport.update({
   path: '/inventory',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SalesRoute = SalesRouteImport.update({
+  id: '/sales',
+  path: '/sales',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ScanRoute = ScanRouteImport.update({
   id: '/scan',
   path: '/scan',
@@ -59,6 +65,7 @@ export interface FileRoutesByFullPath {
   '/dashboard': typeof DashboardRoute
   '/expiry': typeof ExpiryRoute
   '/inventory': typeof InventoryRoute
+  '/sales': typeof SalesRoute
   '/scan': typeof ScanRoute
   '/sell': typeof SellRoute
 }
@@ -68,6 +75,7 @@ export interface FileRoutesByTo {
   '/dashboard': typeof DashboardRoute
   '/expiry': typeof ExpiryRoute
   '/inventory': typeof InventoryRoute
+  '/sales': typeof SalesRoute
   '/scan': typeof ScanRoute
   '/sell': typeof SellRoute
 }
@@ -78,16 +86,31 @@ export interface FileRoutesById {
   '/dashboard': typeof DashboardRoute
   '/expiry': typeof ExpiryRoute
   '/inventory': typeof InventoryRoute
+  '/sales': typeof SalesRoute
   '/scan': typeof ScanRoute
   '/sell': typeof SellRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    '/' | '/auth' | '/dashboard' | '/expiry' | '/inventory' | '/scan' | '/sell'
+    | '/'
+    | '/auth'
+    | '/dashboard'
+    | '/expiry'
+    | '/inventory'
+    | '/sales'
+    | '/scan'
+    | '/sell'
   fileRoutesByTo: FileRoutesByTo
   to:
-    '/' | '/auth' | '/dashboard' | '/expiry' | '/inventory' | '/scan' | '/sell'
+    | '/'
+    | '/auth'
+    | '/dashboard'
+    | '/expiry'
+    | '/inventory'
+    | '/sales'
+    | '/scan'
+    | '/sell'
   id:
     | '__root__'
     | '/'
@@ -95,6 +118,7 @@ export interface FileRouteTypes {
     | '/dashboard'
     | '/expiry'
     | '/inventory'
+    | '/sales'
     | '/scan'
     | '/sell'
   fileRoutesById: FileRoutesById
@@ -105,6 +129,7 @@ export interface RootRouteChildren {
   DashboardRoute: typeof DashboardRoute
   ExpiryRoute: typeof ExpiryRoute
   InventoryRoute: typeof InventoryRoute
+  SalesRoute: typeof SalesRoute
   ScanRoute: typeof ScanRoute
   SellRoute: typeof SellRoute
 }
@@ -146,6 +171,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof InventoryRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/sales': {
+      id: '/sales'
+      path: '/sales'
+      fullPath: '/sales'
+      preLoaderRoute: typeof SalesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/scan': {
       id: '/scan'
       path: '/scan'
@@ -169,6 +201,7 @@ const rootRouteChildren: RootRouteChildren = {
   DashboardRoute: DashboardRoute,
   ExpiryRoute: ExpiryRoute,
   InventoryRoute: InventoryRoute,
+  SalesRoute: SalesRoute,
   ScanRoute: ScanRoute,
   SellRoute: SellRoute,
 }
