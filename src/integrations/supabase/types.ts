@@ -14,7 +14,104 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      products: {
+        Row: {
+          barcode: string
+          brand: string | null
+          category: string | null
+          created_at: string
+          expiry_date: string | null
+          id: string
+          manufacturing_date: string | null
+          mrp: number
+          name: string
+          purchase_date: string | null
+          purchase_price: number
+          quantity: number
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          barcode: string
+          brand?: string | null
+          category?: string | null
+          created_at?: string
+          expiry_date?: string | null
+          id?: string
+          manufacturing_date?: string | null
+          mrp?: number
+          name: string
+          purchase_date?: string | null
+          purchase_price?: number
+          quantity?: number
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          barcode?: string
+          brand?: string | null
+          category?: string | null
+          created_at?: string
+          expiry_date?: string | null
+          id?: string
+          manufacturing_date?: string | null
+          mrp?: number
+          name?: string
+          purchase_date?: string | null
+          purchase_price?: number
+          quantity?: number
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      sales: {
+        Row: {
+          barcode: string | null
+          created_at: string
+          id: string
+          product_id: string | null
+          product_name: string
+          purchase_price: number
+          quantity: number
+          selling_price: number
+          sold_at: string
+          user_id: string
+        }
+        Insert: {
+          barcode?: string | null
+          created_at?: string
+          id?: string
+          product_id?: string | null
+          product_name: string
+          purchase_price?: number
+          quantity?: number
+          selling_price?: number
+          sold_at?: string
+          user_id: string
+        }
+        Update: {
+          barcode?: string | null
+          created_at?: string
+          id?: string
+          product_id?: string | null
+          product_name?: string
+          purchase_price?: number
+          quantity?: number
+          selling_price?: number
+          sold_at?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "sales_product_id_fkey"
+            columns: ["product_id"]
+            isOneToOne: false
+            referencedRelation: "products"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never
