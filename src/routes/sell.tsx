@@ -71,8 +71,15 @@ function SellPage() {
     e.preventDefault();
     if (!selected) return;
     const quantity = Number(qty) || 0;
-    if (quantity <= 0) return toast.error("Enter a valid quantity");
-    if (quantity > selected.quantity) return toast.error("Not enough stock available");
+    if (quantity <= 0) {
+      toast.error("Enter a valid quantity");
+      return;
+    }
+    if (quantity > selected.quantity) {
+      toast.error("Not enough stock available");
+      return;
+    }
+
 
     setBusy(true);
     try {
